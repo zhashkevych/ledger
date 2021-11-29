@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1637923313558,
+  "lastUpdate": 1638212327850,
   "repoUrl": "https://github.com/numary/ledger",
   "entries": {
     "Leger Bench for PostgreSQL": [
@@ -166,6 +166,50 @@ window.BENCHMARK_DATA = {
             "value": 528422,
             "unit": "ns/op",
             "extra": "2265 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "numary",
+            "username": "numary"
+          },
+          "committer": {
+            "name": "numary",
+            "username": "numary"
+          },
+          "id": "84e24de4cc0a5d84f72edc6cc3c34303bb94b4a0",
+          "message": "Update README.md",
+          "timestamp": "2021-11-26T10:51:30Z",
+          "url": "https://github.com/numary/ledger/pull/80/commits/84e24de4cc0a5d84f72edc6cc3c34303bb94b4a0"
+        },
+        "date": 1638212326409,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkTransaction1",
+            "value": 1073558,
+            "unit": "ns/op",
+            "extra": "1170 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkTransaction_20_1k",
+            "value": 8665560401,
+            "unit": "ns/op",
+            "extra": "1 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkGetAccount",
+            "value": 8525458,
+            "unit": "ns/op",
+            "extra": "138 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkFindTransactions",
+            "value": 538926,
+            "unit": "ns/op",
+            "extra": "2275 times\n2 procs"
           }
         ]
       }
