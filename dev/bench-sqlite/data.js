@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1638212301182,
+  "lastUpdate": 1638789035728,
   "repoUrl": "https://github.com/numary/ledger",
   "entries": {
     "Leger Bench for SQLite": [
@@ -140,6 +140,50 @@ window.BENCHMARK_DATA = {
             "value": 452692,
             "unit": "ns/op",
             "extra": "2493 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "numary",
+            "username": "numary"
+          },
+          "committer": {
+            "name": "numary",
+            "username": "numary"
+          },
+          "id": "db1f16785ef58ddc3e2e936c3dea7fe5bb772521",
+          "message": "Feature/storage factory",
+          "timestamp": "2021-12-04T21:49:23Z",
+          "url": "https://github.com/numary/ledger/pull/82/commits/db1f16785ef58ddc3e2e936c3dea7fe5bb772521"
+        },
+        "date": 1638789034333,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkTransaction1",
+            "value": 157004,
+            "unit": "ns/op",
+            "extra": "7942 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkTransaction_20_1k",
+            "value": 765161818,
+            "unit": "ns/op",
+            "extra": "2 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkGetAccount",
+            "value": 16824845,
+            "unit": "ns/op",
+            "extra": "62 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkFindTransactions",
+            "value": 454085,
+            "unit": "ns/op",
+            "extra": "2574 times\n2 procs"
           }
         ]
       }
