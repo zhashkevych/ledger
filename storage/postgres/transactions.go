@@ -164,6 +164,23 @@ func (s *PGStore) FindTransactions(ctx context.Context, q query.Query) (query.Cu
 		)
 	}
 
+	if q.HasParam("meta_key") {
+		in.JoinWithOption(
+			sqlbuilder.LeftJoin,
+			in.As("metadata", "m"),
+			"m.meta_target_id = t.id",
+		)
+		in.Where(
+			in.Equal("m.meta_key", q.Params["meta_key"]),
+			in.Equal("m.meta_target_type", "transaction"),
+		)
+		if q.HasParam("meta_value") {
+			in.Where(
+				in.Equal("m.meta_value", q.Params["meta_value"]),
+			)
+		}
+	}
+
 	sb := sqlbuilder.NewSelectBuilder()
 	sb.Select(
 		"t.id",

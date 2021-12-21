@@ -28,6 +28,23 @@ func (s *SQLiteStore) FindAccounts(ctx context.Context, q query.Query) (query.Cu
 		sb.Where(sb.LessThan("address", q.After))
 	}
 
+	if q.HasParam("meta_key") {
+		sb.JoinWithOption(
+			sqlbuilder.LeftJoin,
+			sb.As("metadata", "m"),
+			"m.meta_target_id = address",
+		)
+		sb.Where(
+			sb.Equal("m.meta_key", q.Params["meta_key"]),
+			sb.Equal("m.meta_target_type", "account"),
+		)
+		if q.HasParam("meta_value") {
+			sb.Where(
+				sb.Equal("m.meta_value", q.Params["meta_value"]),
+			)
+		}
+	}
+
 	sqlq, args := sb.BuildWithFlavor(sqlbuilder.SQLite)
 	logrus.Debugln(sqlq, args)
 
@@ -40,6 +57,8 @@ func (s *SQLiteStore) FindAccounts(ctx context.Context, q query.Query) (query.Cu
 	if err != nil {
 		return c, err
 	}
+
+	defer rows.Close()
 
 	for rows.Next() {
 		var address string

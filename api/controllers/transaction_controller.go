@@ -38,6 +38,8 @@ func (ctl *TransactionController) GetTransactions(c *gin.Context) {
 		query.After(c.Query("after")),
 		query.Reference(c.Query("reference")),
 		query.Account(c.Query("account")),
+		query.Metakey(c.Query("meta_key")),
+		query.Metavalue(c.Query("meta_value")),
 	)
 	if err != nil {
 		ctl.responseError(
